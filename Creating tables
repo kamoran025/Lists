@@ -1,0 +1,22 @@
+number = [1, 2, 3]
+names = ['kevin', 'sarah', 'james']
+grade1 = [88.5, 99.10, 77.50]
+grade2 = [99.3, 95.1, 88.8]
+
+total = 0.0
+
+print('INDEX \t ID \t NAME \t GRADE 1 \t GRADE 2 \t AVG \t FINAL GRADE')
+print('------------------------------------------------')
+for i in range(len(number)):
+    avg = (grade1[i]+grade2[i])/2
+    if avg <60:
+        fg = 'F'
+    elif 60 < avg <70:
+        fg = 'D'
+    elif 70 < avg <80:
+        fg = 'C'
+    elif 80 < avg <90:
+        fg = 'B'
+    elif avg > 90:
+        fg = 'A'
+    print(i,'\t\t', number[i],'\t\t', names[i],'\t', grade1[i],'\t\t', grade2[i], '\t\t',avg, '\t', fg)
