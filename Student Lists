@@ -110,9 +110,6 @@ while again == 'y':
                 avg = AVG(grade1[i],grade2[i])
                 grade = LETTER(avg)
                 print(i,'\t\t',id_list[i], '\t', name_list[i], '\t\t', grade1[i], '\t', grade2[i],'\t\t', avg, '\t', grade)
-           
-            
-
 
     elif ch == 5:
         print('----------------------')
