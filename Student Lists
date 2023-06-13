@@ -1,0 +1,99 @@
+id_list = [12, 23, 34, 11]
+name_list = ['Kevin', 'Paige', 'John', 'Brit']
+grade1 = [90, 98, 83, 76]
+grade2 = [96, 96, 89, 84]
+avg_list = [93, 97, 86, 80]
+
+tot_avg = 0.0
+
+again = 'y'
+while again == 'y':
+    print('MENU')
+    print('-------------------------')
+    print('1. Add students')
+    print('2. Insert students by index #')
+    print('3. Modify student by name')
+    print('4. Search student by name')
+    print('5. Remove student by name')
+    print('-------------------------')
+    ch = int(input('Enter choice: '))
+
+    if ch == 1:
+        print('----------------')
+        print('ADDING A STUDENT')
+        id_list.append(int(input('Enter student ID: ')))
+        name_list.append(input('Enter student name: '))
+        grade1.append(float(input('Enter grade 1: ')))
+        grade2.append(float(input('Enter grade 2: ')))
+        tot_avg += avg
+        print('---------------------------------------')
+        print('INDEX \tID \t\tNAME \t GRADE 1 \t GRADE 2 \t AVG \t GRADE')
+        print('----------------------------------------')
+        for i in range(len(name_list)):
+            print(i,'\t\t',id_list[i], '\t', name_list[i], '\t\t', grade1[i], '\t', grade2[i])
+
+    elif ch == 2:
+        print('----------------')
+        print('INSERTING A STUDENT BY INDEX #')
+        print('----------------------------------')
+        print('INDEX \tID \t\tNAME \t GRADE 1 \t GRADE 2 \t AVG \t GRADE')
+        print('----------------------------------')
+        for i in range(len(name_list)):
+            print(i,'\t\t',id_list[i], '\t', name_list[i], '\t\t', grade1[i], '\t', grade2[i])
+        index_number = int(input('Enter index # for new student: '))
+        id_list.insert(index_number, int(input('Enter new student id:')))
+        name_list.insert(index_number, input('Enter new student name: '))
+        grade1.insert(index_number, float(input('Enter new student grade 1: ')))
+        grade2.insert(index_number, float(input('Enter new student grade 2: ')))
+        print('---------------------------------------')
+        print('INDEX \tID \t\tNAME \t GRADE 1 \t GRADE 2')
+        print('---------------------------------------')
+        for i in range(len(name_list)):
+            print(i,'\t\t',id_list[i], '\t', name_list[i], '\t\t', grade1[i], '\t', grade2[i])
+
+    elif ch == 3:
+        print('----------------')
+        print('MODIFYING A STUDENT BY NAME')
+        print('----------------------------------')
+        print('INDEX \tID \t\tNAME \t GRADE 1 \t GRADE 2 \t AVG \t GRADE')
+        print('----------------------------------')
+        for i in range(len(name_list)):
+            print(i,'\t\t',id_list[i], '\t', name_list[i], '\t\t', grade1[i], '\t', grade2[i])
+        old_student = input('Enter student you wish to replace: ')
+        student_index = name_list.index(old_student)
+        new_student_id = int(input('Enter new student id:'))
+        new_student_name = input('Enter new student name: ')
+        new_student_grade1 = float(input('Enter new student grade 1: '))
+        new_student_grade2 = float(input('Enter new student grade 2: '))
+        id_list[student_index] = new_student_id
+        name_list[student_index] = new_student_name
+        grade1[student_index] = new_student_grade1
+        grade2[student_index] = new_student_grade2
+        print('----------------------------------')
+        print('INDEX \tID \t\tNAME \t GRADE 1 \t GRADE 2 \t AVG \t GRADE')
+        print('----------------------------------')
+        for i in range(len(name_list)):
+            print(i,'\t\t',id_list[i], '\t', name_list[i], '\t\t', grade1[i], '\t', grade2[i])
+
+    elif ch == 4:
+        print('------------------')
+        print('SEARCH STUDENT BY NAME')
+        search = input('Enter the name you are looking for in the list: ')
+        for i in range(len(id_list)):
+            if search == name_list[i]:
+                print('----------------------------------------')
+                print('INDEX \tID \t\tNAME \t GRADE 1 \t GRADE 2 \t AVG \t GRADE')
+                print('----------------------------------------')
+                print(i,'\t\t',id_list[i], '\t', name_list[i], '\t\t', grade1[i], '\t', grade2[i])
+                break
+            else:
+                print(f'{search} is not found in the list')
+                break
+
+    elif ch == 5:
+        print('----------------------')
+        print('REMOVE STUDENT BY NAME')
+        
+
+    print('-----------------------------------------------')
+    again = input('Enter more information y/n: ')
