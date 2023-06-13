@@ -4,7 +4,21 @@ grade1 = [90, 98, 83, 76]
 grade2 = [96, 96, 89, 84]
 avg_list = [93, 97, 86, 80]
 
-tot_avg = 0.0
+def LETTER (avg):
+    if avg >= 90:
+        return 'A'
+    elif avg >= 80:
+        return 'B'
+    elif avg >= 70:
+        return 'C'
+    elif avg >= 60:
+        return 'D'
+    else:
+        return 'F'
+
+def AVG (x,y):
+    a = (x+y)/2
+    return a
 
 again = 'y'
 while again == 'y':
@@ -25,12 +39,13 @@ while again == 'y':
         name_list.append(input('Enter student name: '))
         grade1.append(float(input('Enter grade 1: ')))
         grade2.append(float(input('Enter grade 2: ')))
-        tot_avg += avg
         print('---------------------------------------')
         print('INDEX \tID \t\tNAME \t GRADE 1 \t GRADE 2 \t AVG \t GRADE')
         print('----------------------------------------')
         for i in range(len(name_list)):
-            print(i,'\t\t',id_list[i], '\t', name_list[i], '\t\t', grade1[i], '\t', grade2[i])
+            avg = AVG(grade1[i],grade2[i])
+            grade = LETTER(avg)
+            print(i,'\t\t',id_list[i], '\t', name_list[i], '\t\t', grade1[i], '\t', grade2[i],'\t\t', avg, '\t', grade)
 
     elif ch == 2:
         print('----------------')
@@ -39,7 +54,9 @@ while again == 'y':
         print('INDEX \tID \t\tNAME \t GRADE 1 \t GRADE 2 \t AVG \t GRADE')
         print('----------------------------------')
         for i in range(len(name_list)):
-            print(i,'\t\t',id_list[i], '\t', name_list[i], '\t\t', grade1[i], '\t', grade2[i])
+            avg = AVG(grade1[i],grade2[i])
+            grade = LETTER(avg)
+            print(i,'\t\t',id_list[i], '\t', name_list[i], '\t\t', grade1[i], '\t', grade2[i],'\t\t', avg, '\t', grade)
         index_number = int(input('Enter index # for new student: '))
         id_list.insert(index_number, int(input('Enter new student id:')))
         name_list.insert(index_number, input('Enter new student name: '))
@@ -49,7 +66,9 @@ while again == 'y':
         print('INDEX \tID \t\tNAME \t GRADE 1 \t GRADE 2')
         print('---------------------------------------')
         for i in range(len(name_list)):
-            print(i,'\t\t',id_list[i], '\t', name_list[i], '\t\t', grade1[i], '\t', grade2[i])
+            avg = AVG(grade1[i],grade2[i])
+            grade = LETTER(avg)
+            print(i,'\t\t',id_list[i], '\t', name_list[i], '\t\t', grade1[i], '\t', grade2[i],'\t\t', avg, '\t', grade)
 
     elif ch == 3:
         print('----------------')
@@ -58,7 +77,9 @@ while again == 'y':
         print('INDEX \tID \t\tNAME \t GRADE 1 \t GRADE 2 \t AVG \t GRADE')
         print('----------------------------------')
         for i in range(len(name_list)):
-            print(i,'\t\t',id_list[i], '\t', name_list[i], '\t\t', grade1[i], '\t', grade2[i])
+            avg = AVG(grade1[i],grade2[i])
+            grade = LETTER(avg)
+            print(i,'\t\t',id_list[i], '\t', name_list[i], '\t\t', grade1[i], '\t', grade2[i],'\t\t', avg, '\t', grade)
         old_student = input('Enter student you wish to replace: ')
         student_index = name_list.index(old_student)
         new_student_id = int(input('Enter new student id:'))
@@ -73,7 +94,9 @@ while again == 'y':
         print('INDEX \tID \t\tNAME \t GRADE 1 \t GRADE 2 \t AVG \t GRADE')
         print('----------------------------------')
         for i in range(len(name_list)):
-            print(i,'\t\t',id_list[i], '\t', name_list[i], '\t\t', grade1[i], '\t', grade2[i])
+            avg = AVG(grade1[i],grade2[i])
+            grade = LETTER(avg)
+            print(i,'\t\t',id_list[i], '\t', name_list[i], '\t\t', grade1[i], '\t', grade2[i],'\t\t', avg, '\t', grade)
 
     elif ch == 4:
         print('------------------')
@@ -84,16 +107,32 @@ while again == 'y':
                 print('----------------------------------------')
                 print('INDEX \tID \t\tNAME \t GRADE 1 \t GRADE 2 \t AVG \t GRADE')
                 print('----------------------------------------')
-                print(i,'\t\t',id_list[i], '\t', name_list[i], '\t\t', grade1[i], '\t', grade2[i])
-                break
-            else:
-                print(f'{search} is not found in the list')
-                break
+                avg = AVG(grade1[i],grade2[i])
+                grade = LETTER(avg)
+                print(i,'\t\t',id_list[i], '\t', name_list[i], '\t\t', grade1[i], '\t', grade2[i],'\t\t', avg, '\t', grade)
+           
+            
+
 
     elif ch == 5:
         print('----------------------')
         print('REMOVE STUDENT BY NAME')
-        
+        print()
+        name_remove=input('Enter the name to remove: ')
+        name_index=name_list.index(name_remove)
+        id_list.pop(name_index)
+        name_list.pop(name_index)
+        grade1.pop(name_index)
+        grade2.pop(name_index)
+        print('----------------------------------------')
+        print('INDEX \tID \t\tNAME \t GRADE 1 \t GRADE 2 \t AVG \t GRADE')
+        print('----------------------------------------')
+        for i in range(len(id_list)):
+            avg = AVG(grade1[i],grade2[i])
+            grade = LETTER(avg)
+            print(i,'\t\t',id_list[i], '\t', name_list[i], '\t\t', grade1[i], '\t', grade2[i],'\t\t', avg, '\t', grade)
+    else:
+        print('Invalid choice. ')
 
     print('-----------------------------------------------')
     again = input('Enter more information y/n: ')
