@@ -2,6 +2,8 @@ id_list = [12, 23, 34, 11]
 name_list = ['Kevin', 'Paige', 'John', 'Brit']
 grade1 = [45, 98, 83, 76]
 grade2 = [96, 96, 89, 84]
+average_list = [70.5, 97, 86, 80]
+
 
 def MENU():
     print('MENU')
@@ -25,9 +27,8 @@ def HEADER():
 
 def DISPLAY():
     for i in range(len(id_list)):
-        avg = AVG(grade1[i],grade2[i])
-        grade = LETTER(avg)
-        print(i,'\t\t',id_list[i], '\t', name_list[i], '\t\t', grade1[i], '\t', grade2[i],'\t\t', avg, '\t', grade)
+        grade = LETTER(average_list[i])
+        print(i,'\t\t',id_list[i], '\t', name_list[i], '\t\t', grade1[i], '\t', grade2[i],'\t\t', average_list[i], '\t', grade)
 
 def LETTER(avg):
     if avg >= 90:
@@ -50,8 +51,11 @@ def APPEND():
     print('ADDING A STUDENT')
     id_list.append(int(input('Enter student ID: ')))
     name_list.append(input('Enter student name: '))
-    grade1.append(float(input('Enter grade 1: ')))
-    grade2.append(float(input('Enter grade 2: ')))
+    g1 = float(input('Enter grade 1: '))
+    g2 = float(input('Enter grade 2: '))
+    grade1.append(g1)
+    grade2.append(g2)
+    average_list.append((g1+g2)/2)
     HEADER()
     DISPLAY()
 
@@ -63,8 +67,11 @@ def ADD_INDEX():
     index_number = int(input('Enter index # for new student: '))
     id_list.insert(index_number, int(input('Enter new student id:')))
     name_list.insert(index_number, input('Enter new student name: '))
-    grade1.insert(index_number, float(input('Enter new student grade 1: ')))
-    grade2.insert(index_number, float(input('Enter new student grade 2: ')))
+    g1 = float(input('Enter new student grade 1: '))
+    g2 = float(input('Enter new student grade 2: '))
+    grade1.insert(index_number, g1)
+    grade2.insert(index_number, g2)
+    average_list.insert(index_number, (g1+g2)/2)
     HEADER()
     DISPLAY()
 
@@ -76,8 +83,11 @@ def REPLACE():
     student_index = name_list.index(input('Enter student you wish to replace: '))
     id_list[student_index] = int(input('Enter new student id:'))
     name_list[student_index] = input('Enter new student name: ')
-    grade1[student_index] = float(input('Enter new student grade 1: '))
-    grade2[student_index] = float(input('Enter new student grade 2: '))
+    g1 = float(input('Enter new student grade 1: '))
+    g2 = float(input('Enter new student grade 2: '))
+    grade1[student_index] = g1
+    grade2[student_index] = g2
+    average_list[student_index] = (g1 + g2)/2
     HEADER()
     DISPLAY()
 
@@ -102,6 +112,7 @@ def REMOVE():
     name_list.pop(name_index)
     grade1.pop(name_index)
     grade2.pop(name_index)
+    average_list.pop(name_index)
     HEADER()
     DISPLAY()
 
@@ -149,6 +160,23 @@ def GRADE_BELOW():
         if below <= grade:
             print(i,'\t\t',id_list[i], '\t', name_list[i], '\t\t', grade1[i], '\t', grade2[i],'\t\t', avg, '\t', grade)
 
+def tot_avg_calc():
+    tot_avg=0.0
+    for i in range(len(id_list)):
+        avg = AVG(grade1[i],grade2[i])
+        tot_avg += avg
+        grade = LETTER(avg)
+        print(i,'\t\t',id_list[i], '\t', name_list[i], '\t\t', grade1[i], '\t', grade2[i],'\t\t', avg, '\t', grade)
+    print('------------------------------------------------------------------')
+    print('Your total class average is', tot_avg/len(id_list))
+
+def MIN_GRADE():
+    min = average_list[0]
+    for i in range(len(id_list)):
+        if average_list[i] < min:
+            min = average_list[i]
+            print(id_list[i], '\t',name_list[i], '\t', min)
+
 again = 'y'
 while again == 'y':
     MENU()
@@ -185,8 +213,15 @@ while again == 'y':
         HEADER()
         DISPLAY()
 
+    elif ch == 11:
+        MIN_GRADE()
+
+
     else:
         print('Invalid choice. ')
 
     print('-----------------------------------------------')
     again = input('Enter more information y/n: ')
+
+print('------------------------------------------------------------------')
+tot_avg_calc()
