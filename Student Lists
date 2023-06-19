@@ -97,12 +97,15 @@ def SEARCH():
     print('------------------')
     print('SEARCH STUDENT BY NAME')
     search = input('Enter the name you are looking for in the list: ')
-    HEADER()
     for i in range(len(id_list)):
         if search == name_list[i]:
             avg = AVG(grade1[i],grade2[i])
             grade = LETTER(avg)
+            HEADER()
             print(i,'\t\t',id_list[i], '\t', name_list[i], '\t\t', grade1[i], '\t', grade2[i],'\t\t', avg, '\t', grade)
+            break
+        elif i == len(id_list)-1:
+            print('Student not found.')
 
 def REMOVE():
     print('----------------------')
